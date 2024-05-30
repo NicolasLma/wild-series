@@ -1,3 +1,5 @@
+const tables = require("../../database/tables");
+
 // Some data to make the trick
 
 const categories = [
@@ -15,7 +17,9 @@ const categories = [
 
 /* Here you code */
 const browse = async (req, res) => {
-  res.json(categories);
+  const categoriesFromDB = await tables.category.readAll();
+
+  res.json(categoriesFromDB)
 };
 
 const read = async (req, res) => {
